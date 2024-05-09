@@ -76,3 +76,10 @@ const trampolineFlattenArray = trampoline(function flattenArray(arr, result = []
     });
     return result;
 });
+
+//Time to TEST IT OUT!!!
+//Step 3: Test the Functions
+const nestedArray = [1, [2, [3, 4]], [5, 6]];
+console.log("Original Array:", nestedArray);
+console.log("Flattened Array (Recursive):", flattenArray(nestedArray));
+console.log("Flattened Array (Trampolined):", trampolineFlattenArray(nestedArray));
