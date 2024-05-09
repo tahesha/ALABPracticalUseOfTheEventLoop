@@ -6,3 +6,8 @@ function recursiveFunction() {
     counter++;
     recursiveFunction(); // Call itself recursively
 }
+
+//Step 3: Surround the initial function call in a try/catch block
+try{
+    recursiveFunction(); //Start the recursion
+} catch (error)
