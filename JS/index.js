@@ -56,26 +56,30 @@ const trampolineFlattenArray = trampoline(function flattenArray(arr, result = []
 });
 
 //Step 2: Implement Trampolining
-function trampoline(fn) {
-    return function(...args) {
-        let result = fn(...args);
-        while (typeof result === 'function') {
-            result = result();
-        }
-        return result;
-    }
-}
+// function trampoline(fn) {
+//     return function(...args) {
+//         let result = fn(...args);
+//         while (typeof result === 'function') {
+//             result = result();
+//         }
+//         return result;
+//     }
+// }
 
-const trampolineFlattenArray = trampoline(function flattenArray(arr, result = []) {
-    arr.forEach(element => {
-        if (Array.isArray(element)) {
-            return () => flattenArray(element, result); // Return a function to be called recursively
-        } else {
-            result.push(element); // Add non-array elements to the result array
-        }
-    });
-    return result;
-});
+// const trampolineFlattenArray = trampoline(function flattenArray(arr, result = []) {
+//     arr.forEach(element => {
+//         if (Array.isArray(element)) {
+//             return () => flattenArray(element, result); // Return a function to be called recursively
+//         } else {
+//             result.push(element); // Add non-array elements to the result array
+//         }
+//     });
+//     return result;
+// });
+
+
+//******REMOVED STEP 2 DIRECTLY ABOVE DUE TO REDUNDANCY; NO NEED TO DECLARE TRAMPOLINE AND TRAMPOLINEFLATTENARRAY TWICE.
+
 
 //Time to TEST IT OUT!!!
 //Step 3: Test the Functions
@@ -83,3 +87,6 @@ const nestedArray = [1, [2, [3, 4]], [5, 6]];
 console.log("Original Array:", nestedArray);
 console.log("Flattened Array (Recursive):", flattenArray(nestedArray));
 console.log("Flattened Array (Trampolined):", trampolineFlattenArray(nestedArray));
+
+//ABOVE WORKS PROPERLY...
+
