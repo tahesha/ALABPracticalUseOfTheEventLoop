@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prime Number Calculation</title>
+</head>
+<body>
+    <div id="primeNumbers"></div>
+
+    <script>
+        // Cache the HTML element into a JavaScript variable
+        const primeNumbersElement = document.getElementById('primeNumbers');
+
+        // Function to check if a number is prime
+        function isPrime(num) {
+            if (num <= 1) return false;
+            for (let i = 2; i <= Math.sqrt(num); i++) {
+                if (num % i === 0) return false;
+            }
+            return true;
+        }
+
+        // Function to add prime numbers up to n to the HTML element
+        function addPrimeNumbers(n, current = 2) {
+            if (current > n) {
+                alert('Calculation finished!');
+                return;
+            }
+
+            // Check if current number is prime
+            if (isPrime(current)) {
+                // Append the prime number to the HTML element with a delay
+                setTimeout(() => {
+                    primeNumbersElement.innerHTML += current + ', ';
+                    // Call the function recursively for the next number
+                    addPrimeNumbers(n, current + 1);
+                }, 0);
+            } else {
+                // Call the function recursively for the next number without delay
+                addPrimeNumbers(n, current + 1);
+            }
+     }
+
+        // Run the function with n equal to 10,000
+        addPrimeNumbers(10000);
+    </script>
+</body>
+</html>
