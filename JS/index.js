@@ -34,3 +34,45 @@ function flattenArray(arr) {
 
     return flattened;
 }
+function trampoline(fn) {
+    return function(...args) {
+        let result = fn(...args);
+        while (typeof result === 'function') {
+            result = result();
+        }
+        return result;
+    }
+}
+
+const trampolineFlattenArray = trampoline(function flattenArray(arr, result = []) {
+    arr.forEach(element => {
+        if (Array.isArray(element)) {
+            return () => flattenArray(element, result); // Return a function to be called recursively
+        } else {
+            result.push(element); // Add non-array elements to the result array
+        }
+    });
+    return result;
+});
+
+//Step 2: Implement Trampolining
+function trampoline(fn) {
+    return function(...args) {
+        let result = fn(...args);
+        while (typeof result === 'function') {
+            result = result();
+        }
+        return result;
+    }
+}
+
+const trampolineFlattenArray = trampoline(function flattenArray(arr, result = []) {
+    arr.forEach(element => {
+        if (Array.isArray(element)) {
+            return () => flattenArray(element, result); // Return a function to be called recursively
+        } else {
+            result.push(element); // Add non-array elements to the result array
+        }
+    });
+    return result;
+});
