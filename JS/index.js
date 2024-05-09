@@ -16,3 +16,21 @@ try{
     console.error('Stack Overflow Error:', error);
     console.log('Counter Value:', counter);
 }
+
+
+//Part 2
+
+//Step 1: Write a Recursive function to Flatten an Array
+function flattenArray(arr) {
+    let flattened = [];
+
+    arr.forEach(element => {
+        if (Array.isArray(element)) {
+            flattened.push(...flattenArray(element)); // Recursively flatten nested arrays
+        } else {
+            flattened.push(element); // Add non-array elements to the flattened array
+        }
+    });
+
+    return flattened;
+}
